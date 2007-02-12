@@ -1,5 +1,5 @@
 Summary:	Polish resources for Mozilla-firefox
-Summary(pl.UTF-8):   Polskie pliki językowe dla Mozilli-firefox
+Summary(pl.UTF-8):	Polskie pliki językowe dla Mozilli-firefox
 Name:		mozilla-firefox-bin-lang-pl
 Version:	2.0.0.1
 Release:	1
