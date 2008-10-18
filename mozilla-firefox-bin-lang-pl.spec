@@ -1,13 +1,12 @@
 Summary:	Polish resources for Mozilla-firefox
 Summary(pl.UTF-8):	Polskie pliki językowe dla Mozilli-firefox
 Name:		mozilla-firefox-bin-lang-pl
-Version:	2.0.0.14
+Version:	2.0.0.17
 Release:	1
 License:	GPL
 Group:		I18n
-Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	4a78923e9e57b7f868dd3468e7934e67
-Source1:	pl-PL.manifest
+Source0:	http://releases.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/pl.xpi
+# Source0-md5:	042bf2ad5857ae57ce7dbd3a8d83d344
 URL:		http://www.firefox.pl/
 BuildRequires:	unzip
 Requires(post,postun):	mozilla-firefox-bin >= %{version}
@@ -29,20 +28,17 @@ Polskie pliki językowe dla Mozilli-firefox.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_chromedir},%{_firefoxdir}/{defaults/profile,searchplugins}}
+install -d $RPM_BUILD_ROOT{%{_chromedir},%{_firefoxdir}/defaults/profile}
 
 unzip %{SOURCE0} -d $RPM_BUILD_ROOT%{_libdir}
-mv -f $RPM_BUILD_ROOT%{_libdir}/chrome/pl.jar $RPM_BUILD_ROOT%{_chromedir}/pl-PL.jar
-mv -f $RPM_BUILD_ROOT%{_libdir}/chrome/* $RPM_BUILD_ROOT%{_chromedir}
-mv -f $RPM_BUILD_ROOT%{_libdir}/*.rdf $RPM_BUILD_ROOT%{_firefoxdir}/defaults/profile
-
-install %{SOURCE1} $RPM_BUILD_ROOT%{_chromedir}
+sed -i -e 's,jar:chrome/,jar:,' $RPM_BUILD_ROOT%{_libdir}/chrome.manifest
+mv $RPM_BUILD_ROOT%{_libdir}/chrome.manifest $RPM_BUILD_ROOT%{_chromedir}/pl.manifest
+mv $RPM_BUILD_ROOT%{_libdir}/chrome/pl.jar $RPM_BUILD_ROOT%{_chromedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_chromedir}/pl-PL.jar
-%{_chromedir}/pl-PL.manifest
-%{_firefoxdir}/defaults/profile/*.rdf
+%{_chromedir}/pl.jar
+%{_chromedir}/pl.manifest
