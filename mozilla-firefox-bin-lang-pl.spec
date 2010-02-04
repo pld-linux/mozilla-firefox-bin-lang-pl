@@ -1,12 +1,12 @@
 Summary:	Polish resources for Mozilla-firefox
 Summary(pl.UTF-8):	Polskie pliki językowe dla Mozilli-firefox
 Name:		mozilla-firefox-bin-lang-pl
-Version:	3.5.4
+Version:	3.6
 Release:	1
 License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	a0177aabdcfb5846aff8e368d8af3e42
+# Source0-md5:	0a0ded07b7729af9b8e6406121ba2f5c
 URL:		http://www.firefox.pl/
 BuildRequires:	unzip
 Requires(post,postun):	mozilla-firefox-bin >= %{version}
